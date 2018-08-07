@@ -8,6 +8,7 @@ const roads = [
     "Marketplace-Town Hall", "Shop-Town Hall"
 ];
 
+// BUILDS ROADS IN VILLAGE
 function buildGraph(edges) {
     let graph = Object.create(null);
     function addEdge(from, to) {
@@ -26,6 +27,7 @@ function buildGraph(edges) {
 
 const roadGraph = buildGraph(roads);
 
+// CONTROLS AND UPDATES VILLAGE'S CURRENT AND FUTURE STATE
 class VillageState {
     constructor(place, parcels) {
         this.place = place;
@@ -51,10 +53,6 @@ let first = new VillageState(
     [{place: "Post Office", address: "Alice's House"}]
 );
 let next = first.move("Alice's House");
-
-console.log(next.place);
-console.log(next.parcels);
-console.log(first.place);
 
 // ROBOT MEMORY
 function runRobot(state, robot, memory) {
@@ -93,5 +91,7 @@ VillageState.random = function(parcelCount = 5) {
     }
     return new VillageState("Post Office", parcels);
 };
-
+console.log(next.place);
+console.log(next.parcels);
+console.log(first.place);
 runRobot(VillageState.random(), randomRobot);
